@@ -10,6 +10,7 @@ public class Snakegame {
         Point tuerPosition = new Point(2, 5);
         boolean weiter = true;
         boolean goldeingesammelt = false;
+        Scanner scan = new Scanner(System.in);
 
         //10x40
         while (weiter) {
@@ -21,7 +22,7 @@ public class Snakegame {
                     } else if (p.equals(schlangePosition)) {
                         System.out.print("S");
                     } else if (p.equals(goldPosition)) {
-                        System.out.print("G");
+                        System.out.print("$");
                     } else if (p.equals(tuerPosition)) {
                         System.out.print("T");
                     } else {
@@ -42,7 +43,7 @@ public class Snakegame {
                 weiter = false;
                 System.out.println("Gewonnen!!!");
             }
-            bewegeSpieler(spielerPosition);
+            bewegeSpieler(spielerPosition, scan);
             bewegeSchlange(schlangePosition, spielerPosition);
         }
     }
@@ -54,12 +55,11 @@ public class Snakegame {
             schlangePosition.x++;
         if (spielerPosition.y < schlangePosition.y)
             schlangePosition.y--;
-        else if (spielerPosition.x > schlangePosition.y)
+        else if (spielerPosition.y > schlangePosition.y)
             schlangePosition.y++;
     }
 
-    private static void bewegeSpieler(Point spielerPosition) {
-        Scanner scan = new Scanner(System.in);
+    private static void bewegeSpieler(Point spielerPosition, Scanner scan) {
         String input = scan.next();
 
         //w,a,s,d
